@@ -1,0 +1,43 @@
+### get members
+GET http://localhost:8080/members
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### insert item
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name" : "bbb",
+  "position" : "backend dev"
+}
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### update item
+PUT http://localhost:8080/members/1
+Content-Type: application/json
+
+{
+  "name" : "dress",
+  "color" : "pink"
+}
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### delete item
+DELETE http://localhost:8080/members/1
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}

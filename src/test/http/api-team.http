@@ -1,0 +1,29 @@
+### get team
+GET http://localhost:8080/teams/1
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### insert team
+POST http://localhost:8080/teams
+Content-Type: application/json
+
+{
+ "name" : "bank service"
+}
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### update team
+PUT http://localhost:8080/teams/1
+Content-Type: application/json
+
+> {%client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}

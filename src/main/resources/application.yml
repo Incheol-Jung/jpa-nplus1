@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: JPA-NPlus1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      use-new-id-generator-mappings: true
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    driver-class-name: org.h2.Driver
+    data-username: sa
+    url: jdbc:hsql:mem:mydbname;LOCK_TIMEOUT=10000
+#    url: jdbc:h2:tcp://localhost/~/test;LOCK_TIMEOUT=10000
+    hikari:
+      connection-timeout: 10000
+server:
+  port: 8080
