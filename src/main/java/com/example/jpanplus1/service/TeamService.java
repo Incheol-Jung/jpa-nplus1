@@ -1,5 +1,6 @@
 package com.example.jpanplus1.service;
 
+import com.example.jpanplus1.dao.MemberRepository;
 import com.example.jpanplus1.dao.TeamRepository;
 import com.example.jpanplus1.entity.Member;
 import com.example.jpanplus1.entity.Team;
@@ -17,6 +18,9 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
     public Team getOne(Integer id) {
         return teamRepository.findById(id)
             .orElse(null);
@@ -26,9 +30,19 @@ public class TeamService {
         return teamRepository.save(team);
     }
 
-    public Team update(Integer id, List<Member> members) {
+    public Team update(Integer id) {
         Team team = teamRepository.findById(id).orElse(null);
-        team.setMembers(members);
-        return teamRepository.save(team);
+        List<Member> members = memberRepository.findAll();
+
+        for (Member member : members) {
+            team.getMembers().add(member);
+            member.setTeam(team);
+        }
+        memberRepository.saveAll(members);
+        return teamRepository.saveAndFlush(team);
+    }
+
+    public List<Team> get() {
+        return teamRepository.findAll();
     }
 }

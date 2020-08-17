@@ -6,7 +6,7 @@ GET http://localhost:8080/members
 });
 %}
 
-### insert item
+### insert member
 POST http://localhost:8080/members
 Content-Type: application/json
 
@@ -20,7 +20,7 @@ Content-Type: application/json
 });
 %}
 
-### update item
+### update member
 PUT http://localhost:8080/members/1
 Content-Type: application/json
 

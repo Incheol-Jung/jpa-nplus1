@@ -1,9 +1,12 @@
 package com.example.jpanplus1.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +24,6 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class Team {
     @Id
@@ -29,7 +31,7 @@ public class Team {
     private int id;
     private String name;
 
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Member> members = new ArrayList<>();
 }

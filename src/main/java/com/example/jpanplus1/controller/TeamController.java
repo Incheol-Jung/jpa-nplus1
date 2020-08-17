@@ -25,9 +25,10 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
-    @Autowired
-    private MemberSerivce memberSerivce;
-
+    @GetMapping
+    public List<Team> get(){
+        return teamService.get();
+    }
     @GetMapping("/{id}")
     public Team getOne(@PathVariable Integer id){
         return teamService.getOne(id);
@@ -40,7 +41,6 @@ public class TeamController {
 
     @PutMapping("/{id}")
     public Team update(@PathVariable Integer id) {
-        List<Member> members = memberSerivce.get();
-        return teamService.update(id, members);
+        return teamService.update(id);
     }
 }
