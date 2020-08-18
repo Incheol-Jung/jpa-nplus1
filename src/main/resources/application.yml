@@ -15,8 +15,8 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     data-username: sa
-#    url: jdbc:hsql:mem:mydbname;LOCK_TIMEOUT=10000
-    url: jdbc:h2:tcp://localhost/~/test;LOCK_TIMEOUT=10000
+    url: jdbc:hsql:mem:mydbname;LOCK_TIMEOUT=10000
+#    url: jdbc:h2:tcp://localhost/~/test;LOCK_TIMEOUT=10000
     hikari:
       connection-timeout: 10000
   mvc:
