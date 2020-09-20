@@ -1,5 +1,5 @@
 ### get teams
-GET http://localhost:8080/cats
+GET http://localhost:8080/owners
 
 > {%client.test("Request executed successfully", function() {
     client.assert(response.status === 200, "Response status is not 200");
